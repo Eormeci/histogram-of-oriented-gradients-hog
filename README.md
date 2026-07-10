@@ -1,25 +1,38 @@
-What Happened in This Project?
+# Histogram of Oriented Gradients (HOG) — Face Recognition
 
-In this project, we built a face recognition pipeline using the LFW (Labeled Faces in the Wild) dataset. Here is a summary of what we did:
+A face recognition pipeline using HOG feature extraction and SVM classification on the LFW (Labeled Faces in the Wild) dataset.
 
-Dataset Loading: We loaded a set of face images from the LFW dataset, which contains labeled images of famous people.
+## Pipeline
 
-![image](https://github.com/user-attachments/assets/47692afe-b6a0-4ca2-9da7-4f2ff3eed3c7)
+1. **Dataset Loading** — LFW dataset filtered to people with 100+ face images
+2. **HOG Feature Extraction** — 9 orientations, 8×8 pixels per cell, 2×2 cells per block
+3. **Train/Test Split** — 70% training, 30% testing
+4. **SVM Training** — Linear kernel Support Vector Machine
+5. **Evaluation** — Accuracy score + visualization of correct/incorrect predictions
 
-Figure 1: Example face images from the LFW dataset.
+## Results
 
-Feature Extraction with HOG: We extracted HOG (Histogram of Oriented Gradients) features from each image. HOG helps in capturing the structure and shape of faces by analyzing the gradients in the image.
+### Sample Faces from LFW Dataset
 
-![image](https://github.com/user-attachments/assets/57d9d641-5922-46b4-ab4f-7791737ce0cf)
+![Sample Faces](assets/hog_1.png)
 
-Figure 2: Extracted HOG features from the face images.
+### HOG Feature Visualization
 
-Model Training with SVM: We trained an SVM (Support Vector Machine) classifier using the extracted HOG features. We used a linear kernel to differentiate between the faces of different individuals.
+![HOG Features](assets/hog_2.png)
 
-Testing and Evaluation: We split the dataset into training and testing sets. The model was tested on unseen data to evaluate its accuracy.
+### Correct vs Incorrect Classifications
 
-Visualization: We visualized the original face images, their corresponding HOG features, and examples of correct and incorrect classifications to see how well the model performed.
+![Classifications](assets/hog_3.png)
 
-![image](https://github.com/user-attachments/assets/692c193c-6fa3-4647-9faa-59829a2a5c80)
+## Tech Stack
 
-Figure 3: Correct and incorrect classifications made by the model.
+- **Feature Extraction**: HOG (scikit-image)
+- **Classifier**: SVM with linear kernel (scikit-learn)
+- **Dataset**: LFW (Labeled Faces in the Wild)
+- **Visualization**: Matplotlib
+
+## Notebook
+
+| File | Description |
+|------|-------------|
+| `HOG.ipynb` | Full pipeline: data loading, HOG extraction, SVM training, evaluation, visualization |
